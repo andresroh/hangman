@@ -1,4 +1,4 @@
-![logo](https://ibb.co/LkWy40Z)
+[![Screenshot-from-2023-05-15-20-09-58.png](https://i.postimg.cc/PrNk7nGK/Screenshot-from-2023-05-15-20-09-58.png)](https://postimg.cc/jLV9W9SJ)
 
 ## Descripción del juego
 
