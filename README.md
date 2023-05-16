@@ -1,4 +1,4 @@
-https://ibb.co/LkWy40Z
+![logo](https://ibb.co/LkWy40Z)
 
 ## Descripción del juego
 
