@@ -37,11 +37,21 @@ class Hangman:
         else:
             os.system("clear")
 
-    def draw(self, life, word) -> None:
+    def draw(self, life, word, result) -> None:
 
         self.clear()
         print("* "*10, "HANGMAN", " *"*10, "\n")
         print(">>> ", " ".join(word), self.life(life))
+
+        if result is True:
+            self.clear()
+            print(WIN)
+            input()
+
+        if result is False:
+            self.clear()
+            print(LOSE)
+            input()
 
     def newHang(self, pos, hang, letter) -> list:
 
@@ -51,20 +61,28 @@ class Hangman:
 
     def game(self):
 
+        result = None
         word = self.word()
         hang = ["_" for _ in range(len(word))]
         error = 0
-        self.draw(error, hang)
+        self.draw(error, hang, result)
 
-        while error < MAX_ERROR:
-            letter = input("Write a letter: ")
+        while error < MAX_ERROR and result is None:
+            letter = input(f"Write a letter: {error} {result}")
+
             if letter in word:
                 pos = [p for p, lt in enumerate(word) if lt == letter]
                 hang = self.newHang(pos, hang, letter)
             else:
                 error += 1
 
-            self.draw(error, hang)
+            if "_" not in hang:
+                result = True
+
+            if error == MAX_ERROR:
+                result = False
+
+            self.draw(error, hang, result)
 
     def menu(self) -> None:
 
@@ -80,9 +98,6 @@ class Hangman:
             match option:
                 case "1":
                     self.game()
-                    self.menu()
                 case "2":
                     self.clear()
                     return
-                case _:
-                    pass
